@@ -73,11 +73,11 @@ if __name__ == '__main__':
                 
                 print("\nUpdate Profile:")
 
-                full_name = input(f"Full Name ({current_admin.full_name}): ") or current_admin.full_name
-                phone_number = input(f"Phone Number ({current_admin.phone_number}): ") or current_admin.phone_number
-                email = input(f"Email ({current_admin.email}): ") or current_admin.email  # Allow updating email
-                address = input(f"Address ({current_admin.address}): ") or current_admin.address
-                password = input(f"Password ({current_admin.password}): ") or current_admin.password
+                full_name = input(f"Full Name ({current_admin.full_name}): ")
+                phone_number = input(f"Phone Number ({current_admin.phone_number}): ")
+                email = input(f"Email ({current_admin.email}): ") 
+                address = input(f"Address ({current_admin.address}): ")
+                password = input(f"Password ({current_admin.password}): ")
                 
                 
                 current_admin.full_name = full_name
@@ -260,13 +260,15 @@ def order_history(user):
 
 def update_profile(user):
     print("\nUpdate Profile:")
-    full_name = input(f"Full Name ({user.full_name}): ") or user.full_name
-    phone_number = input(f"Phone Number ({user.phone_number}): ") or user.phone_number
-    address = input(f"Address ({user.address}): ") or user.address
-    password = input(f"Password ({user.password}): ") or user.password
+    full_name = input(f"Full Name ({user.full_name}): ")
+    phone_number = input(f"Phone Number ({user.phone_number}): ")
+    email = input(f"Email ({user.email}): ")
+    address = input(f"Address ({user.address}): ")
+    password = input(f"Password ({user.password}): ")
 
     user.full_name = full_name
     user.phone_number = phone_number
+    user.email = email
     user.address = address
     user.password = password
 
