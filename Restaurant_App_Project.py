@@ -22,7 +22,7 @@ def register_admin():
     admins.append(new_admin)
     print("\nRegistration successful!")
 
-    with open('admins.json', 'a') as admin_file:
+    with open('admins.json', 'a') as file:
         admin_data = {
             'admin_id': new_admin.admin_id,
             'full_name': new_admin.full_name,
@@ -31,8 +31,8 @@ def register_admin():
             'address': new_admin.address,
             'password': new_admin.password
         }
-        json.dump(admin_data, admin_file)
-        admin_file.write('\n')
+        json.dump(admin_data, file)
+        file.write('\n')
 
 
 
@@ -45,24 +45,9 @@ def login_admin():
             return admin
     return None
 
-def read_admins_from_file():
-
-    with open('admins.json', 'r') as admin_file:
-        for line in admin_file:
-            admin_data = json.loads(line)
-            new_admin = admin(
-                admin_data['full_name'],
-                admin_data['phone_number'],
-                admin_data['email'],
-                admin_data['address'],
-                admin_data['password']
-            )
-            new_admin.admin_id = admin_data['admin_id']
-            admins.append(new_admin)
 
 if __name__ == '__main__':
 
-    read_admins_from_file()
 
     current_admin = None
 
