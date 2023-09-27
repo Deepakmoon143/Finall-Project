@@ -45,6 +45,19 @@ def login_admin():
             return admin
     return None
 
+def display_admin_details(admin):
+    if admin:
+        print("\nAdmin Details:")
+        print(f"Admin ID: {admin.admin_id}")
+        print(f"Full Name: {admin.full_name}")
+        print(f"Phone Number: {admin.phone_number}")
+        print(f"Email: {admin.email}")
+        print(f"Address: {admin.address}")
+        print(f"password: {admin.password}")
+    else:
+        print("\nNo admin logged in.")
+
+
 
 if __name__ == '__main__':
 
@@ -56,9 +69,9 @@ if __name__ == '__main__':
         print("1. Register")
         print("2. Log in")
         print("3. Update Profile")
-        print("4. Admin Menu")
-
-        admin_choice = input("Enter your choice: ")
+        print("4. Admin Details")
+        print("5. Admin Menu")
+        admin_choice = input("\nEnter your choice: ")
 
         if admin_choice == '1':
             register_admin()
@@ -91,10 +104,15 @@ if __name__ == '__main__':
                 print("\nPlease log in first.")
 
         elif admin_choice == '4':
+            display_admin_details(current_admin)
+           
+        elif admin_choice =="5":
+             
             if current_admin:
                 break
             else:
                 print("\nPlease log in first.")
+
         else:
             print("\nInvalid choice. Please try again.")
 
@@ -152,7 +170,7 @@ def remove_food(food_id):
     for food in food_items:
         if food.food_id == food_id:
             food_items.remove(food)
-            print("Food item removed successfully")
+            print("\nFood item removed successfully")
             return
     print("\nFood item not found")
 
@@ -161,20 +179,20 @@ if __name__ == '__main__':
     while True:
         print("\nAdmin Menu:")
         print("1. Add new food item")
-        print("2. Edit food item")
-        print("3. View all food items")
+        print("2. View all food items")
+        print("3. Edit food item")
         print("4. Remove food item")
         print("5. Exit")
 
-        choice = input("Enter your choice: ")
+        choice = input("\nEnter your choice: ")
 
         if choice == '1':
             add_food()
         elif choice == '2':
-            food_id = int(input("\nEnter FoodID to edit: "))
-            edit_food(food_id)
+            view_food()    
         elif choice == '3':
-            view_food()
+            food_id = int(input("\nEnter FoodID to edit: "))
+            edit_food(food_id)   
         elif choice == '4':
             food_id = int(input("\nEnter FoodID to remove: "))
             remove_food(food_id)
@@ -251,7 +269,7 @@ def order_history(user):
     user_orders = [order for order in orders if order.user_id == user.user_id]
 
     if user_orders:
-        print("Order History:")
+        print("\nOrder History:")
         for order in user_orders:
             print(f"Order ID: {order.order_id}, Items: {', '.join(order.food_items)}")
     else:
@@ -286,7 +304,7 @@ if __name__ == '__main__':
         print("5. Update Profile")
         print("6. Exit")
 
-        choice = input("Enter your choice: ")
+        choice = input("\nEnter your choice: ")
 
         if choice == '1':
             register_user()
