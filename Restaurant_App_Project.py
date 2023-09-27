@@ -20,7 +20,7 @@ def register_admin():
 
     new_admin = admin(full_name, phone_number, email, address, password)
     admins.append(new_admin)
-    print("Registration successful!")
+    print("\nRegistration successful!")
 
     with open('admins.json', 'a') as admin_file:
         admin_data = {
@@ -67,11 +67,11 @@ if __name__ == '__main__':
     current_admin = None
 
     while True:
-        print("\nAdmin Login:")
+        print("\nAdmin Login/Register:")
         print("1. Register")
         print("2. Log in")
         print("3. Update Profile")
-        print("4. Exit")
+        print("4. Admin Menu")
 
         admin_choice = input("Enter your choice: ")
 
@@ -85,12 +85,29 @@ if __name__ == '__main__':
                 print("\nLogin failed. Please check your credentials.")
         elif admin_choice == '3':
             if current_admin:
-                pass
+                
+                print("\nUpdate Profile:")
+
+                full_name = input(f"Full Name ({current_admin.full_name}): ") or current_admin.full_name
+                phone_number = input(f"Phone Number ({current_admin.phone_number}): ") or current_admin.phone_number
+                email = input(f"Email ({current_admin.email}): ") or current_admin.email  # Allow updating email
+                address = input(f"Address ({current_admin.address}): ") or current_admin.address
+                password = input(f"Password ({current_admin.password}): ") or current_admin.password
+                
+                
+                current_admin.full_name = full_name
+                current_admin.phone_number = phone_number
+                current_admin.address = address
+                current_admin.password = password
+                
+                print("\nProfile updated successfully!")
+            
             else:
                 print("\nPlease log in first.")
+
         elif admin_choice == '4':
             if current_admin:
-                pass
+                break
             else:
                 print("\nPlease log in first.")
         else:
@@ -117,7 +134,7 @@ def add_food():
 
     new_food = FoodItem(name, quantity, price, discount, stock)
     food_items.append(new_food)
-    print("Food item added successfully")
+    print("\nFood item added successfully")
 
 
 def edit_food(food_id):
@@ -131,7 +148,7 @@ def edit_food(food_id):
             food.stock = int(input("Enter the new stock amount: "))
             print("Food item updated successfully")
             return
-    print("Food item not found")
+    print("\nFood item not found")
 
 
 
@@ -152,7 +169,7 @@ def remove_food(food_id):
             food_items.remove(food)
             print("Food item removed successfully")
             return
-    print("Food item not found")
+    print("\nFood item not found")
 
 if __name__ == '__main__':
     
@@ -211,7 +228,7 @@ def register_user():
 
     new_user = User(full_name, phone_number, email, address, password)
     users.append(new_user)
-    print("Registration successful!")
+    print("\nRegistration successful!")
 
 
 def login_user():
@@ -225,7 +242,7 @@ def login_user():
 
 
 def place_order(user):
-    print("Available food items:")
+    print("\nAvailable food items:")
     food_items = [
         "Tandoori Chicken (4 pieces) [INR 240]",
         "Vegan Burger (1 Piece) [INR 320]",
@@ -242,7 +259,7 @@ def place_order(user):
 
     order = Order(user.user_id, order_details)
     orders.append(order)
-    print("Order placed successfully!")
+    print("\nOrder placed successfully!")
 
 
 def order_history(user):
@@ -253,11 +270,11 @@ def order_history(user):
         for order in user_orders:
             print(f"Order ID: {order.order_id}, Items: {', '.join(order.food_items)}")
     else:
-        print("No order history found for this user.")
+        print("\nNo order history found for this user.")
 
 
 def update_profile(user):
-    print("Update Profile:")
+    print("\nUpdate Profile:")
     full_name = input(f"Full Name ({user.full_name}): ") or user.full_name
     phone_number = input(f"Phone Number ({user.phone_number}): ") or user.phone_number
     address = input(f"Address ({user.address}): ") or user.address
@@ -268,7 +285,7 @@ def update_profile(user):
     user.address = address
     user.password = password
 
-    print("Profile updated successfully!")
+    print("\nProfile updated successfully!")
 
 if __name__ == '__main__':
     
