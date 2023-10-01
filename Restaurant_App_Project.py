@@ -87,16 +87,13 @@ if __name__ == '__main__':
                 print("\nUpdate Profile:")
 
                 full_name = input(f"Full Name ({current_admin.full_name}): ")
-                phone_number = input(f"Phone Number ({current_admin.phone_number}): ")
-                email = input(f"Email ({current_admin.email}): ") 
+                phone_number = input(f"Phone Number ({current_admin.phone_number}): ") 
                 address = input(f"Address ({current_admin.address}): ")
-                password = input(f"Password ({current_admin.password}): ")
                 
                 
                 current_admin.full_name = full_name
                 current_admin.phone_number = phone_number
                 current_admin.address = address
-                current_admin.password = password
                 
                 print("\nProfile updated successfully!")
             
